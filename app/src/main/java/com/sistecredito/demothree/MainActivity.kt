@@ -5,11 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.sistecredito.auth.presentation.components.CharacterListScreen
+import com.sistecredito.auth.character.presentation.components.CharacterListScreen
+import com.sistecredito.auth.login.presentation.components.LoginPage
 import com.sistecredito.demothree.navigation.Screen
 import com.sistecredito.demothree.ui.theme.DemothreeTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
 
-                    val navController = rememberNavController()
+                    /*val navController = rememberNavController()
                     NavHost(
                         navController = navController,
                         startDestination = Screen.CharacterListScreen.route
@@ -32,6 +32,18 @@ class MainActivity : ComponentActivity() {
                             route = Screen.CharacterListScreen.route
                         ) {
                             CharacterListScreen(navController)
+                        }
+
+                    }*/
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.LoginPage.route
+                    ) {
+                        composable(
+                            route = Screen.LoginPage.route
+                        ) {
+                            LoginPage(navController)
                         }
 
                     }
