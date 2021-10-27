@@ -1,4 +1,4 @@
-package com.sistecredito.auth.login.data.remote
+package com.sistecredito.network
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

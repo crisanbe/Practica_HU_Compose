@@ -1,16 +1,11 @@
 package com.sistecredito.auth.login.di
 
-import com.sistecredito.auth.character.data.remote.ServiceApi
-import com.sistecredito.auth.character.data.repository.ServiceRepositoryImpl
-import com.sistecredito.auth.character.domain.repository.ServiceRepository
 import com.sistecredito.auth.login.data.remote.LoginApi
-import com.sistecredito.auth.login.data.remote.ServiceBuilder
 import com.sistecredito.auth.login.data.repository.LoginRepositoryImpl
-import com.sistecredito.auth.login.domain.model.Login
 import com.sistecredito.auth.login.domain.repository.LoginRepository
+import com.sistecredito.network.ServiceBuilder
 import com.sistecredito.shared.commons.Constants
 import com.sistecredito.shared.commons.CustomHeader
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,7 +23,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideLoginRepository(): LoginRepository {
-        return LoginRepositoryImpl(ServiceBuilder.createService(
+        return LoginRepositoryImpl(
+            ServiceBuilder.createService(
             serviceType = LoginApi::class.java,
             Constants.URL_SISTE,
             headers = provideHeaders()
