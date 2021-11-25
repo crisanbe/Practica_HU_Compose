@@ -1,8 +1,11 @@
-package com.sistecredito.auth.login.di
+package com.sistecredito.auth.practice.di
 
-import com.sistecredito.auth.practice.data.remote.LoginApi
+
 import com.sistecredito.auth.login.data.repository.LoginRepositoryImpl
 import com.sistecredito.auth.login.domain.repository.LoginRepository
+import com.sistecredito.auth.practice.data.remote.ListaClienteApi
+import com.sistecredito.auth.practice.data.repository.ListaClienteRepositoryImpl
+import com.sistecredito.auth.practice.domain.repository.ListaClienteRepository
 import com.sistecredito.network.ServiceBuilder
 import com.sistecredito.shared.commons.Constants
 import com.sistecredito.shared.commons.CustomHeader
@@ -14,7 +17,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object ListaClienteModule {
 
     @Provides
     @Singleton
@@ -22,11 +25,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLoginRepository(): LoginRepository {
-        return LoginRepositoryImpl(
+    fun provideLoginRepository(): ListaClienteRepository{
+        return ListaClienteRepositoryImpl(
             ServiceBuilder.createService(
-            serviceType = LoginApi::class.java,
-            Constants.URL_SISTE,
+            serviceType = ListaClienteApi::class.java,
+            Constants.URL_PRACTICE,
             headers = provideHeaders()
         ))
     }

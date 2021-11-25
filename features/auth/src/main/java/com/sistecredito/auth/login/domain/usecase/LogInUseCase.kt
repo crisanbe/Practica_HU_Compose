@@ -2,8 +2,6 @@ package com.sistecredito.auth.login.domain.usecase
 
 import com.sistecredito.auth.login.data.remote.dto.LoginDto
 import com.sistecredito.auth.login.data.remote.dto.TokenDto
-import com.sistecredito.auth.login.data.remote.dto.toToken
-import com.sistecredito.auth.login.domain.model.Token
 import com.sistecredito.auth.login.domain.repository.LoginRepository
 import com.sistecredito.shared.network.Resource
 import kotlinx.coroutines.flow.Flow

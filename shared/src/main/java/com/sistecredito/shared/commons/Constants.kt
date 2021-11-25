@@ -3,6 +3,7 @@ package com.sistecredito.shared.commons
 object Constants {
     const val URL_TEST: String = "https://rickandmortyapi.com/api/"
     const val URL_SISTE : String = "https://devapi.credinet.co/"
+    const val URL_PRACTICE : String = "Https://jsonplaceholder.typicode.com/photos/"
 
     //HEADERS
     const val SC_ORIGEN : String = "SCOrigen"
