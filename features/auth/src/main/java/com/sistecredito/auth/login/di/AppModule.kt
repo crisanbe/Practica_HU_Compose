@@ -1,6 +1,7 @@
 package com.sistecredito.auth.login.di
 
-import com.sistecredito.auth.practice.data.remote.LoginApi
+
+import com.sistecredito.auth.login.data.remote.LoginApi
 import com.sistecredito.auth.login.data.repository.LoginRepositoryImpl
 import com.sistecredito.auth.login.domain.repository.LoginRepository
 import com.sistecredito.network.ServiceBuilder

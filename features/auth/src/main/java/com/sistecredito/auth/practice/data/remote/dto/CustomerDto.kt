@@ -2,15 +2,10 @@ package com.sistecredito.auth.practice.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class ListaClienteDto(
-    @SerializedName("albumId")
+data class CustomerDto(
     val albumId: Int,
-    @SerializedName("id")
     val id: Int,
-    @SerializedName("thumbnailUrl")
     val thumbnailUrl: String,
-    @SerializedName("title")
     val title: String,
-    @SerializedName("url")
     val url: String
 )

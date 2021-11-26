@@ -8,9 +8,7 @@ import androidx.compose.material.Surface
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.sistecredito.auth.character.presentation.components.CharacterListScreen
-import com.sistecredito.auth.login.presentation.components.LoginPage
-import com.sistecredito.auth.loginTraining.presentation.component.LoginTrainigScreen
+import com.sistecredito.auth.practice.presentation.components.CustomerPage
 import com.sistecredito.demothree.navigation.Screen
 import com.sistecredito.demothree.ui.theme.DemothreeTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,12 +37,12 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.LoginPage.route
+                        startDestination = Screen.CostumerScreen.route
                     ) {
                         composable(
-                            route = Screen.LoginPage.route
+                            route = Screen.CostumerScreen.route
                         ) {
-                            LoginTrainigScreen(navController)
+                            CustomerPage(navController)
                         }
 
                     }
