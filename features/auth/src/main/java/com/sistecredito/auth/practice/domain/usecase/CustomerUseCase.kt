@@ -12,16 +12,16 @@ import javax.inject.Inject
 
 class CustomerUseCase @Inject constructor(private val repository: CustomerRepository) {
 
-    operator fun invoke(): Flow<Resource<List<CustomerDto>>> = flow{
-        try{
-            Resource.Loading<List<CustomerDto>>()
+    operator fun invoke(): Flow<Resource<List<CustomerDto>>> = flow {
+        try {
+            emit(Resource.Loading<List<CustomerDto>>())
             val listcustomer = repository.doCustomer()
-            Resource.Success<List<CustomerDto>>(listcustomer)
+            emit(Resource.Success<List<CustomerDto>>(listcustomer))
 
-        }catch (e:HttpException){
-            Resource.Error<List<CustomerDto>>(e.localizedMessage ?: "An unexpected error ocurred")
-        }catch (e: IOException){
-            Resource.Error<List<CustomerDto>>("Couldn't reach server. Check you internet connection")
+        } catch (e: HttpException) {
+            emit(Resource.Error<List<CustomerDto>>(e.localizedMessage ?: "An unexpected error ocurred"))
+        } catch (e: IOException) {
+            emit(Resource.Error<List<CustomerDto>>("Couldn't reach server. Check you internet connection"))
         }
     }
 }

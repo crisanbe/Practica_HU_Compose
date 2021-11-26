@@ -10,6 +10,4 @@ class CustomerRepositoryImpl @Inject constructor(private val api: CustomerApi): 
     override suspend fun doCustomer(): List<CustomerDto> {
         return api.doCustomer()
     }
-
-
 }
