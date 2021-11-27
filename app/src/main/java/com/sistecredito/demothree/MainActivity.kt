@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.sistecredito.auth.practice.presentation.components.CustomerPage
+import com.sistecredito.auth.productos.presentation.components.ProductPage
 
 import com.sistecredito.demothree.navigation.Screen
 import com.sistecredito.demothree.ui.theme.DemothreeTheme
@@ -39,7 +40,7 @@ class MainActivity : ComponentActivity() {
                     NavHost(navController, startDestination = Screen.CostumerPage.route
                     ) {
                         composable(route = Screen.CostumerPage.route){
-                            CustomerPage(){ navigationMealId ->//meal_category_id
+                            ProductPage(){ navigationMealId ->//meal_category_id
                                 //navController.navigate("destination_meal_details/$navigationMealId")
                             }
                         }
