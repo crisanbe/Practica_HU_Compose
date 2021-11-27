@@ -36,14 +36,12 @@ class MainActivity : ComponentActivity() {
 
                     }*/
                     val navController = rememberNavController()
-                    NavHost(
-                        navController = navController,
-                        startDestination = Screen.CostumerPage.route
+                    NavHost(navController, startDestination = Screen.CostumerPage.route
                     ) {
-                        composable(
-                            route = Screen.CostumerPage.route
-                        ) {
-                            CustomerPage(navController)
+                        composable(route = Screen.CostumerPage.route){
+                            CustomerPage(){ navigationMealId ->//meal_category_id
+                                //navController.navigate("destination_meal_details/$navigationMealId")
+                            }
                         }
 
                     }
