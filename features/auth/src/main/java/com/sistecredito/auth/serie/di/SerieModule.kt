@@ -1,10 +1,7 @@
-package com.sistecredito.auth.productos.di
+package com.sistecredito.auth.serie.di
 
 
 
-import com.sistecredito.auth.productos.data.remote.ProductApi
-import com.sistecredito.auth.productos.data.repository.ProductRepositoryImpl
-import com.sistecredito.auth.productos.domain.repository.ProductRepository
 import com.sistecredito.auth.serie.data.remote.SerieApi
 import com.sistecredito.auth.serie.data.repository.SerieRepositoryImpl
 import com.sistecredito.auth.serie.domain.repository.SerieRepository
@@ -19,22 +16,22 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object ProductModule {
+object SerieModule {
 
     @Provides
     @Singleton
-    fun provideServiceApi(): ProductApi {
+    fun provideServiceApi(): SerieApi {
         return Retrofit.Builder()
-            .baseUrl(Constants.URL_PRODUCT)
+            .baseUrl(Constants.URL_SERIE)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(ProductApi::class.java)
+            .create(SerieApi::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideServiceRepository(api: ProductApi): ProductRepository {
-        return ProductRepositoryImpl(api)
+    fun provideServiceRepository(api: SerieApi): SerieRepository {
+        return SerieRepositoryImpl(api)
     }
 
 }

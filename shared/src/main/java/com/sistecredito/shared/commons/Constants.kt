@@ -1,9 +1,11 @@
 package com.sistecredito.shared.commons
 
 object Constants {
-
+    const val URL_TEST: String = "https://rickandmortyapi.com/api/"
+    const val URL_SISTE : String = "https://devapi.credinet.co/"
     const val URL_PRACTICE : String = "https://jsonplaceholder.typicode.com/"
     const val URL_PRODUCT : String = "https://pokeapi.co/api/v2/"
+    const val URL_SERIE : String = "https://rickandmortyapi.com/api/"
 
     //HEADERS
     const val SC_ORIGEN : String = "SCOrigen"

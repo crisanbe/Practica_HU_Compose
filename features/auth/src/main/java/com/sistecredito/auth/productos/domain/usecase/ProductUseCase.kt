@@ -2,8 +2,8 @@ package com.sistecredito.auth.productos.domain.usecase
 
 
 import com.sistecredito.auth.productos.data.remote.dto.ProductDto
-import com.sistecredito.auth.productos.data.remote.dto.ResultDto
 import com.sistecredito.auth.productos.domain.repository.ProductRepository
+import com.sistecredito.auth.serie.domain.repository.SerieRepository
 import com.sistecredito.shared.network.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
