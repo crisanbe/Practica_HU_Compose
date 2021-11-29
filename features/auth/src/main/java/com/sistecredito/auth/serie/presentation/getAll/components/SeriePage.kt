@@ -1,4 +1,4 @@
-package com.sistecredito.auth.serie.presentation.components
+package com.sistecredito.auth.serie.presentation.getAll.components
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
@@ -14,17 +14,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
-import com.sistecredito.auth.practice.presentation.components.MealCategory
-import com.sistecredito.auth.productos.data.remote.dto.ResultDto
 import com.sistecredito.auth.serie.data.remote.dto.ResultsDto
-import com.sistecredito.auth.serie.presentation.viewmodel.SerieViewModel
+import com.sistecredito.auth.serie.presentation.getAll.viewmodel.SerieViewModel
 
 @Composable
 fun SeriePage(
-    navigationCallback: (String) -> Unit,
+    navController: NavController,
+    viewModel : SerieViewModel = hiltViewModel()
 ) {
-    val viewModel: SerieViewModel = hiltViewModel()
+
     val state = viewModel.state.value
 
 
@@ -48,15 +48,15 @@ fun SeriePage(
         LazyColumn(modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(15.dp)) {
           state.data?.let {
-              items(state.data) { meal ->
-                  meal?.let { Serie(it, navigationCallback) }
+              items(it.results) { meal ->
+                  meal.let { Serie(it) }
               }
           }
         }
     }
 }
     @Composable
-    fun Serie(meal: ResultsDto, navigationCallback: (String) -> Unit) {
+    fun Serie(meal: ResultsDto) {
         var isExpanded by remember { mutableStateOf(false) }
         Card(
             shape = RoundedCornerShape(8.dp),
@@ -65,7 +65,8 @@ fun SeriePage(
                 .fillMaxWidth()
                 .padding(top = 16.dp)
                 .clickable {
-                    navigationCallback(meal.id.toString())//pasamos la posicion po medio del navigationCallback
+                   // navigationCallback(meal.id.toString())//pasamos la posicion po medio del navigationCallback
+
                 }
         ) {
             Row(modifier = Modifier.animateContentSize()) {

@@ -1,4 +1,4 @@
-package com.sistecredito.auth.serie.presentation.viewmodel
+package com.sistecredito.auth.serie.presentation.getAll.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -28,7 +28,7 @@ class SerieViewModel @Inject constructor(private val productUseCase: SerieUseCas
         productUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                  //  _state.value = SerieState(data = result.data)
+                    _state.value = SerieState(data = result.data)
                 }
                 is Resource.Error -> {
                     _state.value =

@@ -17,7 +17,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
 import com.sistecredito.auth.productos.data.remote.dto.ResultDto
 import com.sistecredito.auth.productos.presentation.viewmodel.ProductViewModel
-import com.sistecredito.auth.serie.presentation.viewmodel.SerieViewModel
 
 @Composable
 fun ProductPage(

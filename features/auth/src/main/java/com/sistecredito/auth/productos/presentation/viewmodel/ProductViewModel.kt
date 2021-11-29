@@ -5,8 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sistecredito.auth.productos.domain.usecase.ProductUseCase
-import com.sistecredito.auth.serie.domain.usecase.SerieUseCase
-import com.sistecredito.auth.serie.presentation.viewmodel.SerieState
 import com.sistecredito.shared.network.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn

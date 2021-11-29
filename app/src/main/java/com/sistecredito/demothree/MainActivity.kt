@@ -8,7 +8,8 @@ import androidx.compose.material.Surface
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.sistecredito.auth.serie.presentation.components.SeriePage
+import com.sistecredito.auth.serie.presentation.getAll.components.SeriePage
+import com.sistecredito.auth.serie.presentation.getById.components.SerieDetailPage
 
 import com.sistecredito.demothree.navigation.Screen
 import com.sistecredito.demothree.ui.theme.DemothreeTheme
@@ -39,9 +40,10 @@ class MainActivity : ComponentActivity() {
                     NavHost(navController, startDestination = Screen.SeriePage.route
                     ) {
                         composable(route = Screen.SeriePage.route){
-                            SeriePage { navigationMealId ->//meal_category_id
-                                //navController.navigate("destination_meal_details/$navigationMealId")
-                            }
+                            SeriePage(navController)
+                        }
+                        composable(route = Screen.SerieDetailPage.route+"/{serieId}"){
+                            SerieDetailPage()
                         }
 
                     }
