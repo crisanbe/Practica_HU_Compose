@@ -8,9 +8,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,9 +15,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
-import com.sistecredito.auth.practice.data.remote.dto.CustomerDto
-import com.sistecredito.auth.practice.presentation.viewmodel.CustomerViewModel
-import com.sistecredito.auth.productos.data.remote.dto.ProductDto
+import com.sistecredito.auth.practice.presentation.components.MealCategory
+import com.sistecredito.auth.productos.data.remote.dto.ResultDto
 import com.sistecredito.auth.productos.presentation.viewmodel.ProductViewModel
 
 @Composable
@@ -48,16 +44,19 @@ fun ProductPage(
         }
 
 
-        LazyColumn(contentPadding = PaddingValues(16.dp)) {
-            items(state.data) { meal ->
-                meal?.let { MealCategor(it, navigationCallback) }
+        LazyColumn(modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(15.dp)) {
+            state.data?.let {
+                items(it.results) { meal ->
+                    MealCategor(meal, navigationCallback)
+                }
             }
-            }
+
         }
     }
-
+}
     @Composable
-    fun MealCategor(meal: ProductDto, navigationCallback: (String) -> Unit) {
+    fun MealCategor(meal: ResultDto, navigationCallback: (String) -> Unit) {
         var isExpanded by remember { mutableStateOf(false) }
         Card(
             shape = RoundedCornerShape(8.dp),
@@ -66,12 +65,12 @@ fun ProductPage(
                 .fillMaxWidth()
                 .padding(top = 16.dp)
                 .clickable {
-                    navigationCallback(meal.next.toString())//pasamos la posicion po medio del navigationCallback
+                    navigationCallback(meal.name)//pasamos la posicion po medio del navigationCallback
                 }
         ) {
             Row(modifier = Modifier.animateContentSize()) {
                 Image(
-                    painter = rememberImagePainter(meal.next),
+                    painter = rememberImagePainter(meal.url),
                     contentDescription = null,
                     modifier = Modifier
                         .size(88.dp)
@@ -85,36 +84,10 @@ fun ProductPage(
                         .padding(16.dp)
                 ) {
                     Text(
-                        text = meal.next,
+                        text = meal.name,
                         style = MaterialTheme.typography.h6
                     )
-                    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-
-                        Image(
-                        painter = rememberImagePainter(meal.results),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(50.dp)
-                            .padding(4.dp)
-                    )
-                    }
                 }
-                Icon(
-                    imageVector = if (isExpanded)
-                        Icons.Filled.KeyboardArrowUp
-                    else
-                        Icons.Filled.KeyboardArrowDown,
-                    contentDescription = "Expand row icon",
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .align(
-                            if (isExpanded)
-                                Alignment.Bottom
-                            else
-                                Alignment.CenterVertically
-                        )
-                        .clickable { isExpanded = !isExpanded }
-                )
             }
         }
 

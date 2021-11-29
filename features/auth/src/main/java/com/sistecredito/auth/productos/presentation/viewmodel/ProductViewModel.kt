@@ -30,7 +30,7 @@ class ProductViewModel @Inject constructor(private val productUseCase: ProductUs
         productUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    _state.value = ProductState(data = result.data?: emptyList())
+                    _state.value = ProductState(data = result.data)
                 }
                 is Resource.Error -> {
                     _state.value =
