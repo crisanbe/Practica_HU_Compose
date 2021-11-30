@@ -10,5 +10,5 @@ import com.sistecredito.auth.serie.data.remote.dto.SerieDto
 interface SerieRepository {
     suspend fun doSerie(): SerieDto
 
-
+    suspend fun getEpisodeById(id: String): ResultsDto
 }

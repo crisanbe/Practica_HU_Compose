@@ -14,4 +14,8 @@ class SerieRepositoryImpl @Inject constructor(private val api: SerieApi): SerieR
       return  api.doSerie()
     }
 
+    override suspend fun getEpisodeById(id: String): ResultsDto {
+        return api.getEpisodeById(id)
+    }
+
 }

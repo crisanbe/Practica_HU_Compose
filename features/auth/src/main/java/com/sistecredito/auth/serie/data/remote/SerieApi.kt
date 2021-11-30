@@ -11,6 +11,8 @@ interface SerieApi {
     @GET("episode")
     suspend fun doSerie(): SerieDto
 
- /*   @GET("")
-    suspend fun getSerieById(@Path serieId:String):*/
+    @GET("episode/{id}")
+    suspend fun getEpisodeById(
+        @Path("id") id:String
+    ):ResultsDto
 }

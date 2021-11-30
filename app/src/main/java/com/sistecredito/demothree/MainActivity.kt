@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
                         composable(route = Screen.SeriePage.route){
                             SeriePage(navController)
                         }
-                        composable(route = Screen.SerieDetailPage.route+"/{serieId}"){
+                        composable(route = "serie_detail"+"/{serieId}"){
                             SerieDetailPage()
                         }
 
