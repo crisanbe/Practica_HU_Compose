@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.sistecredito.auth.serie.presentation.getAll.viewmodel.SerieViewModel
+import com.sistecredito.shared.commons.Screen
 
 @Composable
 fun SeriePage(navController: NavController, viewModel: SerieViewModel = hiltViewModel()) {
@@ -42,10 +43,9 @@ fun SeriePage(navController: NavController, viewModel: SerieViewModel = hiltView
             contentPadding = PaddingValues(15.dp)
         ) {
             state.data?.let {
-                items(it.results) {
-                    episode ->
+                items(it.results) { episode ->
                     EpisodeItem(episode, onItemClick = {
-                        navController.navigate("serie_detail"+"/${episode.id}")
+                        navController.navigate(Screen.SerieDetailPage.route + "/${episode.id}")
                     })
                 }
             }

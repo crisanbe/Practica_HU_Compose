@@ -5,13 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.sistecredito.auth.serie.presentation.getAll.components.SeriePage
 import com.sistecredito.auth.serie.presentation.getById.components.SerieDetailPage
+import com.sistecredito.shared.commons.Screen
 
-import com.sistecredito.demothree.navigation.Screen
+
 import com.sistecredito.demothree.ui.theme.DemothreeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,7 +44,7 @@ class MainActivity : ComponentActivity() {
                         composable(route = Screen.SeriePage.route){
                             SeriePage(navController)
                         }
-                        composable(route = "serie_detail"+"/{serieId}"){
+                        composable(route = Screen.SerieDetailPage.route+"/{serieId}"){
                             SerieDetailPage()
                         }
 

@@ -25,7 +25,7 @@ class SerieDetailsViewModel @Inject constructor(
     val state: State<EpisodeState> = _state
 
     init {
-        savedStateHandle.get<String>("EPISODE_ID")?.let { id ->
+        savedStateHandle.get<String>("serieId")?.let { id ->
             getEpisode(id)
 
         }
